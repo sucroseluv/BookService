@@ -66,9 +66,8 @@ export class BookModel implements Book {
   @Expose({ groups: Groups.ALL })
   @IsOptional({ groups: [Groups.UPDATE] })
   @IsNotEmpty({ groups: [Groups.CREATE] })
-  @IsArray()
-  @ValidateNested({ each: true })
-  @Type(() => String)
+  @IsArray({ groups: Groups.ALL })
+  @IsString({ each: true, groups: Groups.ALL })
   genres: string[];
 
   @Expose({ groups: Groups.ALL, toPlainOnly: true })

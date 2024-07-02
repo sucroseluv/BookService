@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   db:
+    container_name: bookservice_db
     image: postgres:13.5
     restart: always
     environment:
@@ -13,5 +14,6 @@ services:
       - "${POSTGRES_PORT}:${POSTGRES_PORT}"
   server:
     build: ./
+    container_name: bookservice_server
     ports:
       - "3000:3000"

@@ -32,10 +32,12 @@ export class UserModel implements User {
   @IsOptional({ groups: [Groups.UPDATE] })
   @IsNotEmpty({ groups: [Groups.CREATE, Groups.AUTH] })
   @IsString({ groups: Groups.ALL })
-  @Length(1, 30, {
+  @Length(5, 30, {
     groups: Groups.ALL,
   })
-  @IsAlphanumeric()
+  @IsAlphanumeric("en-US", {
+    groups: Groups.ALL,
+  })
   username: string;
 
   @Expose({ toClassOnly: true })
